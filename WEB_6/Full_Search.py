@@ -1,6 +1,7 @@
 import sys
-import requests
 from io import BytesIO
+
+import requests
 from PIL import Image
 
 
@@ -30,8 +31,10 @@ def scale_map(response):
     toponym_coodrinates = toponym["Point"]["pos"]
     toponym_longitude, toponym_lattitude = toponym_coodrinates.split(" ")
 
-    toponym_upperCorner, toponym_lowerCorner = toponym["boundedBy"]["Envelope"]["upperCorner"].split(' '), \
-                                               toponym["boundedBy"]["Envelope"]["lowerCorner"].split(' ')
+    toponym_upperCorner, toponym_lowerCorner = toponym["boundedBy"]["Envelope"]["upperCorner"].split(
+        ' '), \
+                                               toponym["boundedBy"]["Envelope"]["lowerCorner"].split(
+                                                   ' ')
 
     delta_longitude = float(toponym_upperCorner[0]) - float(toponym_lowerCorner[0])
     delta_lattitude = float(toponym_upperCorner[1]) - float(toponym_lowerCorner[1])

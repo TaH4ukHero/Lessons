@@ -50,7 +50,6 @@ class MainWindow(QWidget):
             zoom = int(input("Введите масштаб "))
             self.coords = coords
         self.zoom = zoom
-        print(zoom)
         params = {
             "z": f"{zoom}",
             "ll": f"{self.coords}",

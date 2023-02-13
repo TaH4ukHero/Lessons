@@ -30,7 +30,8 @@ class MainWindow(QWidget):
         with open(self.temp_file, 'wb') as f:
             f.write(r.content)
         self.img_cont.setPixmap(QPixmap(self.temp_file))
-        self.show()
+        if self.isHidden():
+            self.show()
 
     def closeEvent(self, event):
         os.remove(self.temp_file)
@@ -40,7 +41,7 @@ class MainWindow(QWidget):
             if self.zoom < 17:
                 self.zoom += 1
         elif event.key() == Qt.Key_PageDown:
-            if self.zoom > 1:
+            if self.zoom > 0:
                 self.zoom -= 1
         elif event.key() == Qt.Key_R:
             self.cur_mode = (self.cur_mode + 1) % 3
@@ -49,6 +50,9 @@ class MainWindow(QWidget):
     def get_map(self, zoom=0):
         url = "https://static-maps.yandex.ru/1.x/"
         if zoom == 0:
+            print(
+                f"{'*' * 37}\nПоменять тип карты - R\nУвеличить/Уменьшить масштаб PgUp/PgDn\n"
+                f"{'*' * 37}")
             coords = ','.join(
                 list(map(str, input("Введите координаты (разделитель ,) ").split(','))))
             zoom = int(input("Введите масштаб "))

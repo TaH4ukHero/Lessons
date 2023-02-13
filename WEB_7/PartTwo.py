@@ -11,7 +11,6 @@ def except_hook(cls, exception, traceback):
     sys.__excepthook__(cls, exception, traceback)
 
 
-
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
@@ -34,7 +33,7 @@ class MainWindow(QWidget):
     def closeEvent(self, event):
         os.remove(self.temp_file)
 
-    def keyPressEvent(self,event):
+    def keyPressEvent(self, event):
         if event.key() == Qt.Key_PageUp:
             if self.zoom < 17:
                 self.zoom += 1
@@ -42,7 +41,6 @@ class MainWindow(QWidget):
             if self.zoom > 1:
                 self.zoom -= 1
         self.get_map(self.zoom)
-
 
     def get_map(self, zoom=0):
         url = "https://static-maps.yandex.ru/1.x/"
@@ -65,6 +63,7 @@ class MainWindow(QWidget):
             self.get_img(r)
         else:
             print('Возникла Ошибка')
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

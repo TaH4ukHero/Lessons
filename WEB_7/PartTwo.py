@@ -19,7 +19,7 @@ class MainWindow(QWidget):
 
     def initUi(self):
         self.setGeometry(400, 200, 600, 450)
-        self.setWindowTitle('Большая задача по Maps API. Часть №1')
+        self.setWindowTitle('Большая задача по Maps API. Часть №2')
         self.img_cont = QLabel()
         self.img_cont.resize(600, 450)
         self.img_cont.move(0, 0)
